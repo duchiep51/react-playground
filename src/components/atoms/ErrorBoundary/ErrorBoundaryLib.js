@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { ErrorBoundary } from "react-error-boundary";
+import { toast } from "react-toastify";
 
 function ErrorFallback({ error, resetErrorBoundary }) {
   return (
@@ -24,6 +25,13 @@ function BuggyCounter() {
 }
 
 function SimulateBugWithLib() {
+  const notify = () => {
+    // toast("Wow so easy !");
+
+    toast.success("Error!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+  };
   return (
     <div>
       <p>
@@ -43,7 +51,7 @@ function SimulateBugWithLib() {
         onReset={() => {
           console.log("reset");
         }}
-        onError={(e) => console.log("error: ", e)}
+        onError={notify}
       >
         <p>
           These two counters are inside the same error boundary. If one crashes,
