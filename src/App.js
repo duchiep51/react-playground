@@ -9,7 +9,7 @@ function App() {
   usePost()
 
   return (
-    <div className="App">
+    <div className="App bg-black">
       <Button
         onClick={() => {
           setState(state + 1);

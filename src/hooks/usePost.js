@@ -21,10 +21,15 @@ const usePost = () => {
   const fetchPostWithObservable = () => {
     from(axios.get("https://jsonplaceholder.typicode.com/posts"))
       .pipe(
-        mergeMap((res) => res.data.map((item) => item.id)),
+        mergeMap((res) => {
+          console.log("res", res);
+          return res.data.map((item) => item.id);
+        }),
         map((i) => i)
       )
-      .subscribe((item) => {console.log(item)});
+      .subscribe((item) => {
+        console.log(item);
+      });
   };
 
   useEffect(() => {
