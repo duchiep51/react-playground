@@ -1,5 +1,7 @@
+import axios from "axios";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import { from, map, mergeMap } from "rxjs";
 
 const usePost = () => {
   const [posts, setPosts] = useState([]);
@@ -16,8 +18,18 @@ const usePost = () => {
     setPosts(posts);
   };
 
+  const fetchPostWithObservable = () => {
+    from(axios.get("https://jsonplaceholder.typicode.com/posts"))
+      .pipe(
+        mergeMap((res) => res.data.map((item) => item.id)),
+        map((i) => i)
+      )
+      .subscribe((item) => {console.log(item)});
+  };
+
   useEffect(() => {
-    fetchPosts();
+    // fetchPosts();
+    fetchPostWithObservable();
   }, []);
 
   return {
