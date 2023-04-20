@@ -33,7 +33,7 @@ const usePost = () => {
   };
 
   useEffect(() => {
-    // fetchPosts();
+    fetchPosts();
     fetchPostWithObservable();
   }, []);
 

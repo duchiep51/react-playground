@@ -1,22 +1,18 @@
-import { Button } from "@mui/material";
-import { useState } from "react";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
+import MultiStepsForm from "./components/widgets/MultiStepForm";
 import usePost from "./hooks/usePost";
+import Routes from "./routes";
+import NavBar from "./components/atoms/NavBar/NavBar";
 
 function App() {
-  const [state, setState] = useState(1);
-  usePost()
+  // usePost();
+  //   <MultiStepsForm />
 
   return (
-    <div className="App bg-black">
-      <Button
-        onClick={() => {
-          setState(state + 1);
-        }}
-      >
-        Click me
-      </Button>
+    <div className="App">
+      <NavBar />
+      <Routes />
     </div>
   );
 }
